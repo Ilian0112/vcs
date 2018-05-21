@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const YTDL = require("ytdl-core");
-const prefix = "vcs";
+const prefix = "v.";
 const queue = new Map();
 var client = new Discord.Client();
 const bot_user = new Discord.Client({ autoReconnect: true });
@@ -27,7 +27,7 @@ bot.on("message", async function(message) {
     if (!message.content.startsWith(prefix)) return;
     switch (args[0].toLowerCase()) {
 
-case " help":
+case "help":
     var help_embed = new Discord.RichEmbed()
         .setColor("#FFFFFF")
         .addField(prefix + "help", "Affiche la liste des commandes disponibles.")
@@ -39,7 +39,7 @@ case " help":
     message.channel.send(help_embed)
 break;
 
-case " serverlist":
+case "serverlist":
     var allservers = bot.guilds.array(); for (var o in allservers) {
         var serverlist_embed = new Discord.RichEmbed()
             .setColor("#FFFFFF")
@@ -51,7 +51,7 @@ case " serverlist":
     }
 break;
 
-case " rules":
+case "rules":
     var vcsrules_embed = new Discord.RichEmbed()
         .setTitle("Règles du VCS :")
         .addField("Règle n°1 :", "Restez respectueux et polies avec tout le monde !")
@@ -70,7 +70,7 @@ case " rules":
    console.log(message.author.tag + " (" + message.author.id + ") a demandé les règles du VCS !")
 break;
 
-case " ":
+case "vcs":
     let xoargs = message.content.split(" ").slice(1);
     let suffix = xoargs.join(' ')
     var xo02 = message.guild.channels.find('name','vcs');
@@ -113,7 +113,7 @@ case " ":
     }
 break;
 
-case " setgame":
+case "setgame":
     let foargs = message.content.split(" ").slice(1);
     let setgamesuffix = foargs.join(' ')
     if(message.author.id === "274240989944610827") {
@@ -133,7 +133,7 @@ case " setgame":
     }
 break;
 
-case " install":
+case "install":
     var errorpermission_embed = new Discord.RichEmbed ()
         .setColor("#FF0000")
         .addField("Désolé !", "Il y a une erreur avec votre requête !")
@@ -147,7 +147,7 @@ case " install":
     console.log(message.author.tag + " (" + message.author.id + ") a créé le salon #vcs du ZENBOT sur le serveur " + message.guild.name + " !")
 break;
 
-case " report":
+case "report":
     let zoargs = message.content.split(" ").slice(1);
     let report = zoargs.join(' ')
     if (!report) return message.reply("Merci d'écrire l'objet de votre REPORT.")
