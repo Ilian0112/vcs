@@ -101,14 +101,14 @@ case "vcs":
         message.channel.send(vcsbanned_embed)
         console.log(message.author.tag + " (" + message.author.id + ") a tenté d'écrire un message dans le VCS.")
     }else{
-    message.delete()
     const vcs_embed = new Discord.RichEmbed()
         .setColor("#FFFFFF")
         .setAuthor("VCS")
         .addField("Message de " + message.author.username, "```" + suffix + "```")
         .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + ".")
-        .setThumbnail(message.guild.iconURL)
-    bot.channels.findAll('name', 'zenbot-vcs').map(channel => channel.send(vcs_embed));
+        .setThumbnail(message.author.avatarURL)
+    message.delete()
+    bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcs_embed));
     console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " : " + suffix)
     }
 break;
