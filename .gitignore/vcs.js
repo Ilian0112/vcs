@@ -32,8 +32,8 @@ case "help":
         .setColor("#FFFFFF")
         .addField(prefix + "help", "Affiche la liste des commandes disponibles.")
         .addField(prefix + "serverlist", "Affiche la liste des serveurs où je suis.")
-        .addField(prefix + "vcsrules", "Affiche les règles du VCS.")
-        .addField(prefix + "vcs <MESSAGE>", "Permet d'envoyer un message dans le VCS.")
+        .addField(prefix + "rules", "Affiche les règles du VCS.")
+        .addField(prefix + " <MESSAGE>", "Permet d'envoyer un message dans le VCS.")
         .addField(prefix + "report", "Permet de signaler une personne ou un bug au créateur.")
         .addField(prefix + "install", "Permet de créer un salon #vcs. (Demande la permission de créer des salons !)")
     message.channel.send(help_embed)
@@ -51,7 +51,7 @@ case "serverlist":
     }
 break;
 
-case "vcsrules":
+case "rules":
     var vcsrules_embed = new Discord.RichEmbed()
         .setTitle("Règles du VCS :")
         .addField("Règle n°1 :", "Restez respectueux et polies avec tout le monde !")
