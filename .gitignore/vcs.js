@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const YTDL = require("ytdl-core");
 const prefix = "vcs ";
 const queue = new Map();
-const token = "NDEyMjY0MDIxNTM0OTY1Nzcx.DWI-pQ.tnXAsfqMERUpwwUlsPpJdJOMRcA";
 var client = new Discord.Client();
 const bot_user = new Discord.Client({ autoReconnect: true });
 var bot_version = ('0.0.1');
@@ -10,7 +9,7 @@ var bot = new Discord.Client();
 var servers = {};
 
 bot.on('ready', () => {
-    bot.user.setStatus('Online');
+    bot.user.setStatus('Online'); // En ligne : 'Online' | Inactif : 'idle' | Ne pas déranger : 'dnd' | Invisible 'invisible'
     bot.user.setActivity(prefix + "help | " + bot.guilds.size + " serveurs | " + bot.users.size + " utilisateurs", {
         'type': 'STREAMING',
         'url': "https://twitch.tv/ZENFIX_"
@@ -176,7 +175,7 @@ break;
     }
 });
 
-bot.login(token);
+bot.login(process.env.TOKEN);
 
 bot.on("error", err => {
     console.log(err);
