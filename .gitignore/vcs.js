@@ -32,9 +32,10 @@ case "help":
     var help_embed = new Discord.RichEmbed()
         .setColor("#FFFFFF")
         .addField(prefix + "help", "Affiche la liste des commandes disponibles.")
-        .addField(prefix + "serverlist", "Affiche la liste des serveurs où je suis.")
         .addField(prefix + "rules", "Affiche les règles du VCS.")
         .addField(prefix + "<MESSAGE>", "Permet d'envoyer un message dans le VCS.")
+        .addField(prefix + "invite", "Donne une invitation pour m'ajouter sur un serveur.")
+        .addField(prefix + "serverlist", "Affiche la liste des serveurs où je suis.")
         .addField(prefix + "report", "Permet de signaler une personne ou un bug au créateur.")
         .addField(prefix + "install", "Permet de créer un salon #vcs. (Demande la permission de créer des salons !)")
     message.channel.send(help_embed)
@@ -170,6 +171,15 @@ case "report":
     message.channel.send(reporteffectue_embed)
     message.client.users.get("274240989944610827").send(report_embed)
     console.log(message.author.tag + " (" + message.author.id + ") via le serveur " + message.guild.name + " a fait un rapport.\n ( " + report + " )")
+break;
+
+case "invite": 
+    var invite_embed = new Discord.RichEmbed()
+        .setColor("#FFFFFF")
+        .addField("Invitation", "[Voici le lien pour m'inviter ! : https://discordapp.com/oauth2/authorize?client_id=422436671540428810&permissions=8&scope=bot](https://discordapp.com/oauth2/authorize?client_id=422436671540428810&permissions=8&scope=bot)")
+    message.delete()
+    message.channel.send(invite_embed)
+    console.log(message.author.tag + " (" + message.author.id + ") a demandé l'invitation du bot.")
 break;
 
         default:
