@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const YTDL = require("ytdl-core");
 const prefix = "vcs ";
 const queue = new Map();
+const token = "NDEyMjY0MDIxNTM0OTY1Nzcx.DWI-pQ.tnXAsfqMERUpwwUlsPpJdJOMRcA";
 var client = new Discord.Client();
 const bot_user = new Discord.Client({ autoReconnect: true });
 var bot_version = ('0.0.1');
@@ -9,8 +10,8 @@ var bot = new Discord.Client();
 var servers = {};
 
 bot.on('ready', () => {
-    bot.user.setStatus('Online'); // En ligne : 'Online' | Inactif : 'idle' | Ne pas déranger : 'dnd' | Invisible 'invisible'
-    bot.user.setActivity(prefix + "message | " + bot.guilds.size + " serveurs | " + bot.users.size + " utilisateurs", {
+    bot.user.setStatus('Online');
+    bot.user.setActivity(prefix + "help | " + bot.guilds.size + " serveurs | " + bot.users.size + " utilisateurs", {
         'type': 'STREAMING',
         'url': "https://twitch.tv/ZENFIX_"
     },
@@ -29,8 +30,14 @@ bot.on("message", async function(message) {
 
 case "help":
     var help_embed = new Discord.RichEmbed()
-        
-    message.channel.send
+        .setColor("#FFFFFF")
+        .addField(prefix + "help", "Affiche la liste des commandes disponibles.")
+        .addField(prefix + "serverlist", "Affiche la liste des serveurs où je suis.")
+        .addField(prefix + "vcsrules", "Affiche les règles du VCS.")
+        .addField(prefix + "vcs <MESSAGE>", "Permet d'envoyer un message dans le VCS.")
+        .addField(prefix + "report", "Permet de signaler une personne ou un bug au créateur.")
+        .addField(prefix + "install", "Permet de créer un salon #vcs. (Demande la permission de créer des salons !)")
+    message.channel.send(help_embed)
 break;
 
 case "serverlist":
@@ -127,18 +134,18 @@ case "setgame":
     }
 break;
 
-case "installvcs":
-    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(errorpermission_embed);
+case "install":
+    var errorpermission_embed = new Discord.RichEmbed ()
+        .setColor("#FF0000")
+        .addField("Désolé !", "Il y a une erreur avec votre requête !")
+        .addField("Raison :", "• Il vous manque une permission.")
+    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(errorpermission_embed);
     message.guild.createChannel('zenbot-vcs')
     var installvcs_embed = new Discord.RichEmbed()
       .setColor("#FFFFFF")
       .addField("Le VCS est prêt !", "Le salon ``#zenbot-vcs`` a été créé !")
     message.channel.send(installvcs_embed)
     console.log(message.author.tag + " (" + message.author.id + ") a créé le salon #vcs du ZENBOT sur le serveur " + message.guild.name + " !")
-    var errorpermission_embed = new Discord.RichEmbed ()
-        .setColor("#FF0000")
-        .addField("Désolé !", "Il y a une erreur avec votre requête !")
-        .addField("Raison :", "• Il vous manque une permission.")
 break;
 
 case "report":
@@ -169,7 +176,7 @@ break;
     }
 });
 
-bot.login(process.env.TOKEN);
+bot.login(token);
 
 bot.on("error", err => {
     console.log(err);
