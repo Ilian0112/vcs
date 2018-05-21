@@ -28,6 +28,7 @@ bot.on("message", async function(message) {
     switch (args[0].toLowerCase()) {
 
 case "help":
+    message.delete()
     var help_embed = new Discord.RichEmbed()
         .setColor("#FFFFFF")
         .addField(prefix + "help", "Affiche la liste des commandes disponibles.")
@@ -40,6 +41,7 @@ case "help":
 break;
 
 case "serverlist":
+    message.delete()
     var allservers = bot.guilds.array(); for (var o in allservers) {
         var serverlist_embed = new Discord.RichEmbed()
             .setColor("#FFFFFF")
@@ -52,6 +54,7 @@ case "serverlist":
 break;
 
 case "rules":
+    message.delete()
     var vcsrules_embed = new Discord.RichEmbed()
         .setTitle("Règles du VCS :")
         .addField("Règle n°1 :", "Restez respectueux et polies avec tout le monde !")
@@ -65,7 +68,7 @@ case "rules":
         .addField("Message aux propriétaires de serveurs :", "Nous vous invitons à sanctionner les gens qui ne respectent pas les règles du VCS !")
         .addField("Message aux utilisateurs du bot :", "Nous vous invitons à nous signaler les personnes qui ne respectent pas les règles du VCS grâce à la commande " + prefix + "report <RAISON>.\nMerci !")
         .setColor("#FFFFFF")
-        .setTimestamp()
+    message.react("✅")
     message.channel.send(vcsrules_embed)
    console.log(message.author.tag + " (" + message.author.id + ") a demandé les règles du VCS !")
 break;
@@ -107,6 +110,7 @@ case "vcs":
         .addField("Message de " + message.author.username, "```" + suffix + "```")
         .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + ".")
         .setThumbnail(message.author.avatarURL)
+        .setTimestamp()
     message.delete()
     bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcs_embed));
     console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " : " + suffix)
@@ -117,6 +121,7 @@ case "setgame":
     let foargs = message.content.split(" ").slice(1);
     let setgamesuffix = foargs.join(' ')
     if(message.author.id === "274240989944610827") {
+        message.delete()
         var statuschange_embed = new Discord.RichEmbed()
             .addField("Status changé !", "Mon status a été changé en ``Joue à " + setgamesuffix + "`` !")
             .setColor("#FFFFFF")
@@ -124,6 +129,7 @@ case "setgame":
         bot.user.setActivity(setgamesuffix)
         console.log("Status changé en " + setgamesuffix + " par " + message.author.tag + " (" + message.author.id + ").")
     }else{
+        message.delete()
         var statuspaschange_embed = new Discord.RichEmbed()
             .setTitle("Erreur !")
             .addField("Raison :", "• Seul le proprétaire du bot peut éxécuter cette commande !")
