@@ -33,7 +33,7 @@ case "help":
         .addField(prefix + "help", "Affiche la liste des commandes disponibles.")
         .addField(prefix + "serverlist", "Affiche la liste des serveurs où je suis.")
         .addField(prefix + "rules", "Affiche les règles du VCS.")
-        .addField(prefix + " <MESSAGE>", "Permet d'envoyer un message dans le VCS.")
+        .addField(prefix + "<MESSAGE>", "Permet d'envoyer un message dans le VCS.")
         .addField(prefix + "report", "Permet de signaler une personne ou un bug au créateur.")
         .addField(prefix + "install", "Permet de créer un salon #vcs. (Demande la permission de créer des salons !)")
     message.channel.send(help_embed)
@@ -70,7 +70,7 @@ case "rules":
    console.log(message.author.tag + " (" + message.author.id + ") a demandé les règles du VCS !")
 break;
 
-case "vcs":
+case "":
     let xoargs = message.content.split(" ").slice(1);
     let suffix = xoargs.join(' ')
     var xo02 = message.guild.channels.find('name','vcs');
