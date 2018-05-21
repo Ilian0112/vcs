@@ -173,6 +173,7 @@ case "report":
 break;
 
         default:
+            message.delete()
             var errorcommand_embed = new Discord.RichEmbed ()
                 .setColor("#FF0000")
                 .addField("Désolé !", "Il y a une erreur avec votre requête !")
