@@ -139,10 +139,10 @@ case "install":
         .addField("Désolé !", "Il y a une erreur avec votre requête !")
         .addField("Raison :", "• Il vous manque une permission.")
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(errorpermission_embed);
-    message.guild.createChannel('zenbot-vcs')
+    message.guild.createChannel('vcs')
     var installvcs_embed = new Discord.RichEmbed()
       .setColor("#FFFFFF")
-      .addField("Le VCS est prêt !", "Le salon ``#zenbot-vcs`` a été créé !")
+      .addField("Le VCS est prêt !", "Le salon ``#vcs`` a été créé !")
     message.channel.send(installvcs_embed)
     console.log(message.author.tag + " (" + message.author.id + ") a créé le salon #vcs du ZENBOT sur le serveur " + message.guild.name + " !")
 break;
