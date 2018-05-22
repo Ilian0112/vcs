@@ -108,7 +108,7 @@ case "vcs":
         message.channel.send(vcsbanned_embed)
         console.log(message.author.tag + " (" + message.author.id + ") a tenté d'écrire un message dans le VCS.")
     }else if(message.author.guild.id === "379019337945579520") {
-        var vcszenfix_embed = new Discord.RichEmbed()
+        var vcszenfixserveur_embed = new Discord.RichEmbed()
             .setColor("#000000")
             .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448589434540261386/Z_-_Blanc.png")
             .addField("Message de " + message.author.username, "```" + suffix + "```")
@@ -116,7 +116,7 @@ case "vcs":
             .setThumbnail(message.author.avatarURL)
             .setTimestamp()
             message.delete()
-            bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcs_embed));
+            bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcszenfixserveur_embed));
             console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.displayName + ") : " + suffix)
     }else{
     const vcs_embed = new Discord.RichEmbed()
