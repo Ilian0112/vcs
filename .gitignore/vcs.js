@@ -90,7 +90,7 @@ case "vcs":
         .addField("Erreur !", "Il y a une erreur avec votre requête !")
         .addField("Raison :", "• Vous n'avez pas donné de message à envoyer grâce au VCS !")
     if(message.author.id === "274240989944610827") {
-        const vcs_embed = new Discord.RichEmbed()
+        const vcsproprietaire_embed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448569680676913173/Couronne.PNG")
         .addField("Message de " + message.author.username, "```" + suffix + "```")
@@ -98,7 +98,7 @@ case "vcs":
         .setThumbnail(message.author.avatarURL)
         .setTimestamp()
     message.delete()
-    bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcs_embed));
+    bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcsproprietaire_embed));
     console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.displayName + ") : " + suffix)
     }else if(message.author.id === "XXX") {
         var vcsbanned_embed = new Discord.RichEmbed()
@@ -107,6 +107,17 @@ case "vcs":
             .addField("Raison :", "• Vous avez été banni du VCS pour non-respect du règlement (" + prefix + "vcsrules)")
         message.channel.send(vcsbanned_embed)
         console.log(message.author.tag + " (" + message.author.id + ") a tenté d'écrire un message dans le VCS.")
+    }else if(message.author.guild.name === "") {
+        var vcszenfix_embed = new Discord.RichEmbed()
+            .setColor("#000000")
+            .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448589434540261386/Z_-_Blanc.png")
+            .addField("Message de " + message.author.username, "```" + suffix + "```")
+            .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + ".")
+            .setThumbnail(message.author.avatarURL)
+            .setTimestamp()
+            message.delete()
+            bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcs_embed));
+            console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.displayName + ") : " + suffix)
     }else{
     const vcs_embed = new Discord.RichEmbed()
         .setColor("#FFFFFF")
