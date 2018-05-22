@@ -4,7 +4,6 @@ const prefix = "v.";
 const queue = new Map();
 var client = new Discord.Client();
 const bot_user = new Discord.Client({ autoReconnect: true });
-var bot_version = ('0.0.1');
 var bot = new Discord.Client();
 var servers = {};
 
@@ -43,15 +42,13 @@ break;
 
 case "serverlist":
     message.delete()
-    var allservers = bot.guilds.array(); for (var o in allservers) {
-        var serverlist_embed = new Discord.RichEmbed()
-            .setColor("#FFFFFF")
-            .addField("Serveurs :", "``" + allservers[o].name + "``", true)
-            .addBlankField(true)
-            .addField("Membres :", "``" + allservers[o].memberCount + "``", true)
-        message.channel.send(serverlist_embed)
-        console.log(message.author.tag + " (" + message.author.id + ") a demandé la liste des serveurs ! (" + message.author.guild.name + ")")
-    }
+    var serverlist_embed = new Discord.RichEmbed()
+        .setColor("#FFFFFF")
+        .addField("Serveurs :", bot.guilds.map(g => "``" + g.name + "``").join("\n"), true)
+        .addBlankField(true)
+        .addField("Membres :", bot.guilds.map(g => "``" + g.memberCount + "``").join("\n"), true)
+    message.channel.send(serverlist_embed)
+    console.log(message.author.tag + " (" + message.author.id + ") a demandé la liste des serveurs ! (" + message.guild.name + ")")
 break;
 
 case "rules":
@@ -69,9 +66,8 @@ case "rules":
         .addField("Message aux propriétaires de serveurs :", "Nous vous invitons à sanctionner les gens qui ne respectent pas les règles du VCS !")
         .addField("Message aux utilisateurs du bot :", "Nous vous invitons à nous signaler les personnes qui ne respectent pas les règles du VCS grâce à la commande " + prefix + "report <RAISON>.\nMerci !")
         .setColor("#FFFFFF")
-    message.react("✅")
     message.channel.send(vcsrules_embed)
-   console.log(message.author.tag + " (" + message.author.id + ") a demandé les règles du VCS !")
+    console.log(message.author.tag + " (" + message.author.id + ") a demandé les règles du VCS !")
 break;
 
 case "vcs":
@@ -88,18 +84,25 @@ case "vcs":
         .addField("Erreur !", "Il y a une erreur dans votre requête !")
         .addField("Raison :", "• Cette commande doit être faite dans le salon #vcs de votre serveur !")
     if(message.channel.name !== 'vcs') return message.channel.send(vcspasdanssalonvcs_embed)
-    var vcspasdemessage_embed = new Discord.RichEmbed()
-        .setColor("#FF0000")
-        .addField("Erreur !", "Il y a une erreur dans votre requête !")
-        .addField("Raison :", "• Vous n'avez pas donné de message pour le VCS.")
     if(!suffix) return message.channel.send(vcspasdemessage_embed)
     var vcspasdemessage_embed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .addField("Erreur !", "Il y a une erreur avec votre requête !")
         .addField("Raison :", "• Vous n'avez pas donné de message à envoyer grâce au VCS !")
-    if(message.author.id === "XXX") {
+    if(message.author.id === "274240989944610827") {
+        const vcs_embed = new Discord.RichEmbed()
+        .setColor("#FF0000")
+        .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448569680676913173/Couronne.PNG")
+        .addField("Message de " + message.author.username, "```" + suffix + "```")
+        .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + ".")
+        .setThumbnail(message.author.avatarURL)
+        .setTimestamp()
+    message.delete()
+    bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcs_embed));
+    console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.displayName + ") : " + suffix)
+    }else if(message.author.id === "XXX") {
         var vcsbanned_embed = new Discord.RichEmbed()
-            .setColor("#FF0000")
+            .setColor("#FFFFFF")
             .addField("Erreur !", "Il y a une erreur avec votre requête !")
             .addField("Raison :", "• Vous avez été banni du VCS pour non-respect du règlement (" + prefix + "vcsrules)")
         message.channel.send(vcsbanned_embed)
@@ -114,7 +117,7 @@ case "vcs":
         .setTimestamp()
     message.delete()
     bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcs_embed));
-    console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " : " + suffix)
+    console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.displayName + ") : " + suffix)
     }
 break;
 
@@ -140,6 +143,29 @@ case "setgame":
     }
 break;
 
+case "refreshgame":
+    if(message.author.id === "274240989944610827") {
+        message.delete()
+        var statusactualise_embed = new Discord.RichEmbed()
+            .addField("Status actualisé !", "Mon status a été actualisé !")
+            .setColor("#FFFFFF")
+        message.channel.send(statusactualise_embed)
+        bot.user.setActivity(prefix + "help | " + bot.guilds.size + " serveurs | " + bot.users.size + " utilisateurs", {
+            'type': 'STREAMING',
+            'url': "https://twitch.tv/ZENFIX_"
+        })
+        console.log("Status actualisé par " + message.author.tag + " (" + message.author.id + ").")
+    }else{
+        message.delete()
+        var statuspasactualise_embed = new Discord.RichEmbed()
+            .setTitle("Erreur !")
+            .addField("Raison :", "• Seul le proprétaire du bot peut éxécuter cette commande !")
+            .setColor("#FF0000")
+        message.channel.send(statuspasactualise_embed)
+        console.log(message.author.tag + " (" + message.author.id + ") a voulu actualisé mon status !")
+    }
+break;
+
 case "install":
     var errorpermission_embed = new Discord.RichEmbed ()
         .setColor("#FF0000")
@@ -157,7 +183,7 @@ break;
 case "report":
     let zoargs = message.content.split(" ").slice(1);
     let report = zoargs.join(' ')
-    if (!report) return message.reply("Merci d'écrire l'objet de votre REPORT.")
+    if (!report) return message.channel.send("Merci d'écrire l'objet de votre REPORT.")
     var report_embed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .addField(message.author.username + " – REPORT", "```" + report + "```")
@@ -176,7 +202,7 @@ break;
 case "invite": 
     var invite_embed = new Discord.RichEmbed()
         .setColor("#FFFFFF")
-        .addField("Invitation", "[Voici le lien pour m'inviter ! : https://discordapp.com/oauth2/authorize?client_id=422436671540428810&permissions=8&scope=bot](https://discordapp.com/oauth2/authorize?client_id=422436671540428810&permissions=8&scope=bot)")
+        .addField("Invitation", "[CLIQUE ICI POUR M'INVITER !](https://discordapp.com/oauth2/authorize?client_id=422436671540428810&scope=bot&permissions=3484752)\n[SI TU VEUX REJOINDRE LE SERVEUR DE MON CREATEUR, CLIQUE ICI !](https://discord.gg/DWDNEEq)")
     message.delete()
     message.channel.send(invite_embed)
     console.log(message.author.tag + " (" + message.author.id + ") a demandé l'invitation du bot.")
