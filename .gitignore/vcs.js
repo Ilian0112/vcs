@@ -110,7 +110,7 @@ case "vcs":
     }else if(message.guild.id === "379019337945579520") {
         var vcszenfixserveur_embed = new Discord.RichEmbed()
             .setColor("#000000")
-            .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448589434540261386/Z_-_Blanc.png")
+            .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448594106252525578/ZENFIX.png")
             .addField("Message de " + message.author.username, "```" + suffix + "```")
             .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + ".")
             .setThumbnail(message.author.avatarURL)
