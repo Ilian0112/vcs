@@ -107,7 +107,7 @@ case "vcs":
             .addField("Raison :", "• Vous avez été banni du VCS pour non-respect du règlement (" + prefix + "vcsrules)")
         message.channel.send(vcsbanned_embed)
         console.log(message.author.tag + " (" + message.author.id + ") a tenté d'écrire un message dans le VCS.")
-    }else if(message.author.guild.name === "") {
+    }else if(message.author.guild.id === "379019337945579520") {
         var vcszenfix_embed = new Discord.RichEmbed()
             .setColor("#000000")
             .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448589434540261386/Z_-_Blanc.png")
