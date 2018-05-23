@@ -118,7 +118,7 @@ case "vcs":
             message.delete()
             bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcszenfixserveur_embed));
             console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.displayName + ") : " + suffix)
-    }else if(message.guild.id === "337863843281764372") { //264039650316910603
+    }else if(message.guild.id === "337863843281764372") {
         var slender_embed = new Discord.RichEmbed()
             .setColor("#FF0000")
             .addField("Erreur !", "Désolé il y a une erreur avec votre requête !")
