@@ -118,18 +118,18 @@ case "vcs":
             message.delete()
         bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcszenfixserveur_embed));
         console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.displayName + ") : " + suffix)
-    //}else if(message.guild.id === "337863843281764372") {
-        //var slender_embed = new Discord.RichEmbed()
-            //.setColor("#FF0000")
-            //.addField("Erreur !", "Désolé il y a une erreur avec votre requête !")
-            //.addField("Raison :", "• Le VCS a été désactivé de manière temporaire par un adminsitrateur du VCS sur votre serveur suite à des plaintes. (" + prefix + "rules)")
-        //message.delete()
-        //message.channel.send(slender_embed)
-        //console.log("Slender.")
+    }else if(message.guild.id === "337863843281764372") {
+       /var guildban_embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .addField("Erreur !", "Désolé il y a une erreur avec votre requête !")
+            .addField("Raison :", "• Le VCS a été désactivé de manière temporaire par un adminsitrateur du VCS sur votre serveur suite à des plaintes. (" + prefix + "rules)")
+        message.delete()
+        message.channel.send(guildban_embed)
+        console.log(message.author.tag + " (" + message.author.id + ") a tenté d'écrire un message dans le VCS depuis le serveur banni " + message.guild.name + " (" + message.guild.id + ").")
     }else{
     const vcs_embed = new Discord.RichEmbed()
         .setColor("#FFFFFF")
-        .setAuthor("VCS")
+        .setAuthor("VCS", message.guild.iconURL)
         .addField("Message de " + message.author.username, "```" + suffix + "```")
         .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + ".")
         .setThumbnail(message.author.avatarURL)
