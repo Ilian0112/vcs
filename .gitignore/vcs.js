@@ -69,7 +69,7 @@ case "rules":
     message.channel.send(vcsrules_embed)
     console.log(message.author.tag + " (" + message.author.id + ") a demandé les règles du VCS !")
 break;
-
+            
 case "vcs":
     let xoargs = message.content.split(" ").slice(1);
     let suffix = xoargs.join(' ')
@@ -118,6 +118,13 @@ case "vcs":
             message.delete()
             bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcszenfixserveur_embed));
             console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.displayName + ") : " + suffix)
+    }else if(message.guild.id === "337863843281764372") {
+        var slender_embed = new Discord.RichEmbed()
+            .setColor("#FF0000")
+            .addField("Erreur !", "Désolé il y a une erreur avec votre requête !")
+            .addField("Raison :", "• Le VCS a été désactivé de manière temporaire par un adminsitrateur sur votre serveur suite à des plaintes.")
+        message.channel.send(slender_embed)
+        console.log("Slender.")
     }else{
     const vcs_embed = new Discord.RichEmbed()
         .setColor("#FFFFFF")
