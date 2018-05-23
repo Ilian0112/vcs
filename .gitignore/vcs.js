@@ -122,14 +122,16 @@ case "vcs":
         var slender_embed = new Discord.RichEmbed()
             .setColor("#FF0000")
             .addField("Erreur !", "Désolé il y a une erreur avec votre requête !")
-            .addField("Raison :", "• Le VCS a été désactivé de manière temporaire par un adminsitrateur sur votre serveur suite à des plaintes.")
+            .addField("Raison :", "• Le VCS a été désactivé de manière temporaire par un adminsitrateur du VCS sur votre serveur suite à des plaintes. (" + prefix + "rules)")
+        message.delete()
         message.channel.send(slender_embed)
         console.log("Slender.")
     }else if(message.guild.id === "264039650316910603") {
         var elixion_embed = new Discord.RichEmbed()
             .setColor("#FF0000")
             .addField("Erreur !", "Désolé il y a une erreur avec votre requête !")
-            .addField("Raison :", "• Le VCS a été désactivé de manière temporaire par un adminsitrateur sur votre serveur suite à des plaintes.")
+            .addField("Raison :", "• Le VCS a été désactivé de manière temporaire par un adminsitrateur du VCSsur votre serveur suite à des plaintes. (" + prefix + "rules)")
+        message.delete()
         message.channel.send(elixion_embed)
         console.log("Elixion.")
     }else{
