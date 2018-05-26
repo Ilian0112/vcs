@@ -32,7 +32,7 @@ case "help":
         .setColor("#FFFFFF")
         .addField(prefix + "help", "Affiche la liste des commandes disponibles.")
         .addField(prefix + "rules", "Affiche les règles du VCS.")
-        .addField(prefix + "<MESSAGE>", "Permet d'envoyer un message dans le VCS.")
+        .addField(prefix + "vcs <MESSAGE>", "Permet d'envoyer un message dans le VCS.")
         .addField(prefix + "invite", "Donne une invitation pour m'ajouter sur un serveur.")
         .addField(prefix + "serverlist", "Affiche la liste des serveurs où je suis.")
         .addField(prefix + "report", "Permet de signaler une personne ou un bug au créateur.")
