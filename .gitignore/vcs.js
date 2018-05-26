@@ -91,33 +91,22 @@ case "vcs":
         .addField("Raison :", "• Vous n'avez pas donné de message à envoyer grâce au VCS !")
     if(message.author.id === "274240989944610827") {
         const vcsproprietaire_embed = new Discord.RichEmbed()
-        .setColor("#FF0000")
-        .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448569680676913173/Couronne.PNG")
-        .addField("Message de " + message.author.username, "```" + suffix + "```")
-        .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + ".")
-        .setThumbnail(message.author.avatarURL)
-        .setTimestamp()
-    message.delete()
-    bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcsproprietaire_embed));
-    console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.displayName + ") : " + suffix)
+            .setColor("#FF0000")
+            .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448569680676913173/Couronne.PNG")
+            .addField("Message de " + message.author.username, suffix)
+            .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ").")
+            .setThumbnail(message.author.avatarURL)
+            .setTimestamp()
+        message.delete()
+        bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcsproprietaire_embed));
+        console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ") : " + suffix)
     }else if(message.author.id === "XXX") {
         var vcsbanned_embed = new Discord.RichEmbed()
             .setColor("#FFFFFF")
             .addField("Erreur !", "Il y a une erreur avec votre requête !")
             .addField("Raison :", "• Vous avez été banni du VCS pour non-respect du règlement (" + prefix + "vcsrules)")
         message.channel.send(vcsbanned_embed)
-        console.log(message.author.tag + " (" + message.author.id + ") a tenté d'écrire un message dans le VCS.")
-    }else if(message.guild.id === "379019337945579520") {
-        var vcszenfixserveur_embed = new Discord.RichEmbed()
-            .setColor("#000000")
-            .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448594106252525578/ZENFIX.png")
-            .addField("Message de " + message.author.username, "```" + suffix + "```")
-            .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + ".")
-            .setThumbnail(message.author.avatarURL)
-            .setTimestamp()
-            message.delete()
-        bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcszenfixserveur_embed));
-        console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.displayName + ") : " + suffix)
+        console.log(message.author.tag + " (" + message.author.id + ") a tenté d'écrire un message dans le VCS depuis le serveur" + message.guild.name + " (" + message.guild.id  + ").")
     }else if(message.guild.id === "XXX") {
        var guildban_embed = new Discord.RichEmbed()
             .setColor("#FF0000")
@@ -126,17 +115,39 @@ case "vcs":
         message.delete()
         message.channel.send(guildban_embed)
         console.log(message.author.tag + " (" + message.author.id + ") a tenté d'écrire un message dans le VCS depuis le serveur banni " + message.guild.name + " (" + message.guild.id + ").")
+    }else if(message.author.id === "193092758267887616") {
+        var vcscoeur_embed = new Discord.RichEmbed()
+            .setColor("#000000")
+            .setAuthor("VCS", "https://vignette.wikia.nocookie.net/desencyclopedie/images/0/05/Coeur.png/revision/latest?cb=20110108004655")
+            .addField("Message de " + message.author.username, "```" + suffix + "```")
+            .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ").")
+            .setThumbnail(message.author.avatarURL)
+            .setTimestamp()
+            message.delete()
+        bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcscoeur_embed));
+        console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ") : " + suffix)
+    }else if(message.guild.id === "379019337945579520") {
+        var vcszenfixserveur_embed = new Discord.RichEmbed()
+            .setColor("#000000")
+            .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448594106252525578/ZENFIX.png")
+            .addField("Message de " + message.author.username, "```" + suffix + "```")
+            .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ").")
+            .setThumbnail(message.author.avatarURL)
+            .setTimestamp()
+            message.delete()
+        bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcszenfixserveur_embed));
+        console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ") : " + suffix)
     }else{
-    const vcs_embed = new Discord.RichEmbed()
-        .setColor("#FFFFFF")
-        .setAuthor("VCS", message.guild.iconURL)
-        .addField("Message de " + message.author.username, "```" + suffix + "```")
-        .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + ".")
-        .setThumbnail(message.author.avatarURL)
-        .setTimestamp()
-    message.delete()
-    bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcs_embed));
-    console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.displayName + ") : " + suffix)
+        const vcs_embed = new Discord.RichEmbed()
+            .setColor("#FFFFFF")
+            .setAuthor("VCS", message.guild.iconURL)
+            .addField("Message de " + message.author.username, "```" + suffix + "```")
+            .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ").")
+            .setThumbnail(message.author.avatarURL)
+            .setTimestamp()
+        message.delete()
+        bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcs_embed));
+        console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ") : " + suffix)
     }
 break;
 
@@ -221,7 +232,7 @@ break;
 case "invite": 
     var invite_embed = new Discord.RichEmbed()
         .setColor("#FFFFFF")
-        .addField("Invitation", "[CLIQUE ICI POUR M'INVITER !](https://discordapp.com/oauth2/authorize?client_id=422436671540428810&scope=bot&permissions=3484752)\n[SI TU VEUX REJOINDRE LE SERVEUR DE MON CREATEUR, CLIQUE ICI !](https://discord.gg/DWDNEEq)")
+        .addField("Invitation", "[<:VCS:449952466566381569> Clique-ici pour m'inviter sur un serveur ! (Demande la permission 'Gérer le serveur')](https://discordapp.com/oauth2/authorize?client_id=422436671540428810&scope=bot&permissions=3484752)\n[<:ZENFIX:389102428844457994> Clique-ici pour rejoindre le serveur support.](https://discord.gg/DWDNEEq)")
     message.delete()
     message.channel.send(invite_embed)
     console.log(message.author.tag + " (" + message.author.id + ") a demandé l'invitation du bot.")
