@@ -115,17 +115,17 @@ case "vcs":
         message.delete()
         message.channel.send(guildban_embed)
         console.log(message.author.tag + " (" + message.author.id + ") a tenté d'écrire un message dans le VCS depuis le serveur banni " + message.guild.name + " (" + message.guild.id + ").")
-    }else if(message.author.id === "193092758267887616") {
-        var vcscoeur_embed = new Discord.RichEmbed()
-            .setColor("#ff4ccc")
-            .setAuthor("VCS", "https://vignette.wikia.nocookie.net/desencyclopedie/images/0/05/Coeur.png/revision/latest?cb=20110108004655")
-            .addField("Message de " + message.author.username + " :", suffix)
-            .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ").")
-            .setThumbnail(message.author.avatarURL)
-            .setTimestamp()
-            message.delete()
-        bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcscoeur_embed));
-        console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ") : " + suffix)
+    //}else if(message.author.id === "193092758267887616") {
+        //var vcscoeur_embed = new Discord.RichEmbed()
+            //.setColor("#ff4ccc")
+            //.setAuthor("VCS", "https://vignette.wikia.nocookie.net/desencyclopedie/images/0/05/Coeur.png/revision/latest?cb=20110108004655")
+            //.addField("Message de " + message.author.username + " :", suffix)
+            //.setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ").")
+            //.setThumbnail(message.author.avatarURL)
+            //.setTimestamp()
+            //message.delete()
+        //bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcscoeur_embed));
+        //console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ") : " + suffix)
     }else if(message.guild.id === "379019337945579520") {
         var vcszenfixserveur_embed = new Discord.RichEmbed()
             .setColor("#000000")
