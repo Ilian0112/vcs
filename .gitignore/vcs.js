@@ -117,7 +117,7 @@ case "vcs":
         console.log(message.author.tag + " (" + message.author.id + ") a tenté d'écrire un message dans le VCS depuis le serveur banni " + message.guild.name + " (" + message.guild.id + ").")
     }else if(message.author.id === "193092758267887616") {
         var vcscoeur_embed = new Discord.RichEmbed()
-            .setColor("#000000")
+            .setColor("#ff4ccc")
             .setAuthor("VCS", "https://vignette.wikia.nocookie.net/desencyclopedie/images/0/05/Coeur.png/revision/latest?cb=20110108004655")
             .addField("Message de " + message.author.username + " :", suffix)
             .setFooter("Envoyé par " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ").")
