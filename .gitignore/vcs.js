@@ -84,11 +84,11 @@ case "vcs":
         .addField("Erreur !", "Il y a une erreur dans votre requête !")
         .addField("Raison :", "• Cette commande doit être faite dans le salon #vcs de votre serveur !")
     if(message.channel.name !== 'vcs' && message.channel.name !== 'v-c-s') return message.channel.send(vcspasdanssalonvcs_embed)
-    if(!suffix) return message.channel.send(vcspasdemessage_embed)
     var vcspasdemessage_embed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .addField("Erreur !", "Il y a une erreur avec votre requête !")
         .addField("Raison :", "• Vous n'avez pas donné de message à envoyer grâce au VCS !")
+    if(!suffix) return message.channel.send(vcspasdemessage_embed)
     if(message.author.id === "274240989944610827") {
         const vcsproprietaire_embed = new Discord.RichEmbed()
             .setColor("#FF0000")
@@ -129,7 +129,7 @@ case "vcs":
         bot.channels.findAll('name', 'v-c-s').map(channel => channel.send(vcscoeur_embed));
         console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ") : " + suffix)
     }else if(message.guild.id === "379019337945579520") {
-        var vcszenfixserveur_embed = new Discord.RichEmbed()
+        const vcszenfixserveur_embed = new Discord.RichEmbed()
             .setColor("#000000")
             .setAuthor("VCS", "https://cdn.discordapp.com/attachments/338443503635791874/448594106252525578/ZENFIX.png")
             .addField("Message de " + message.author.username + " :", suffix)
