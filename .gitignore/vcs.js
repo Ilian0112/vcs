@@ -83,7 +83,7 @@ case "vcs":
         .setColor("#FF0000")
         .addField("Erreur !", "Il y a une erreur dans votre requête !")
         .addField("Raison :", "• Cette commande doit être faite dans le salon #vcs de votre serveur !")
-    if(message.channel.name !== 'vcs' || message.channel.name !== 'v-c-s') return message.channel.send(vcspasdanssalonvcs_embed)
+    if(message.channel.name !== 'vcs' && message.channel.name !== 'v-c-s') return message.channel.send(vcspasdanssalonvcs_embed)
     if(!suffix) return message.channel.send(vcspasdemessage_embed)
     var vcspasdemessage_embed = new Discord.RichEmbed()
         .setColor("#FF0000")
@@ -99,6 +99,7 @@ case "vcs":
             .setTimestamp()
         message.delete()
         bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcsproprietaire_embed));
+        bot.channels.findAll('name', 'v-c-s').map(channel => channel.send(vcsproprietaire_embed));
         console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ") : " + suffix)
     }else if(message.author.id === "XXX") {
         var vcsbanned_embed = new Discord.RichEmbed()
@@ -125,6 +126,7 @@ case "vcs":
             .setTimestamp()
         message.delete()
         bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcscoeur_embed));
+        bot.channels.findAll('name', 'v-c-s').map(channel => channel.send(vcscoeur_embed));
         console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ") : " + suffix)
     }else if(message.guild.id === "379019337945579520") {
         var vcszenfixserveur_embed = new Discord.RichEmbed()
@@ -136,6 +138,7 @@ case "vcs":
             .setTimestamp()
         message.delete()
         bot.channels.findAll('name', 'vcs').map(channel => channel.send(vcszenfixserveur_embed));
+        bot.channels.findAll('name', 'v-c-s').map(channel => channel.send(vcszenfixserveur_embed));
         console.log("VCS : Message de " + message.author.tag + " (" + message.author.id + ") depuis le serveur " + message.guild.name + " (" + message.guild.id + ") : " + suffix)
     }else{
         const vcs_embed = new Discord.RichEmbed()
