@@ -74,11 +74,12 @@ case "vcs":
     let xoargs = message.content.split(" ").slice(1);
     let suffix = xoargs.join(' ')
     var xo02 = message.guild.channels.find('name','vcs');
+    var xo022 = message.guild.channels.find('name','v-c-s');
     var vcspasdesalonvcs_embed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .addField("Erreur !", "Il y a une erreur dans votre requête !")
         .addField("Raison :", "• Il n'y a pas de salon #vcs dans votre serveur ! Merci de contacter le propriétaire de votre serveur (" + message.guild.owner + ") ou un adminisitrateur du serveur pour qu'il éxécute la commande '" + prefix + "install' !")
-    if(!xo02) return message.channel.send(vcspasdesalonvcs_embed)
+    if(!xo02 && !xo022) return message.channel.send(vcspasdesalonvcs_embed)
     var vcspasdanssalonvcs_embed = new Discord.RichEmbed()
         .setColor("#FF0000")
         .addField("Erreur !", "Il y a une erreur dans votre requête !")
