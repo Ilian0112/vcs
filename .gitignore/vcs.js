@@ -236,7 +236,7 @@ break;
 case "invite": 
     var invite_embed = new Discord.RichEmbed()
         .setColor("#FFFFFF")
-        .addField("Invitation", "[<:VCS:449952466566381569> Clique-ici pour m'inviter sur un serveur !](https://discordapp.com/oauth2/authorize?client_id=422436671540428810&scope=bot&permissions=3484752)\n[<:ZENFIX:389102428844457994> Clique-ici pour rejoindre le serveur support.](https://discord.gg/DWDNEEq)")
+        .addField("Invitation", "[<:VCS:449952466566381569> Clique-ici pour m'inviter sur un serveur !](https://discordapp.com/oauth2/authorize?client_id=422436671540428810&scope=bot&permissions=70642768)\n[<:ZENFIX:389102428844457994> Clique-ici pour rejoindre le serveur support.](https://discord.gg/DWDNEEq)")
     message.delete()
     message.channel.send(invite_embed)
     console.log(message.author.tag + " (" + message.author.id + ") a demandé l'invitation du bot.")
