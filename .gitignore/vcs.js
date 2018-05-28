@@ -170,7 +170,7 @@ case "setgame":
     }else{
         message.delete()
         var statuspaschange_embed = new Discord.RichEmbed()
-            .setTitle("Erreur !")
+            .setTitle("Erreur !", "Désolé il y a une erreur avec votre requête !")
             .addField("Raison :", "• Seul le proprétaire du bot peut éxécuter cette commande !")
             .setColor("#FF0000")
         message.channel.send(statuspaschange_embed)
@@ -193,7 +193,7 @@ case "refreshgame":
     }else{
         message.delete()
         var statuspasactualise_embed = new Discord.RichEmbed()
-            .setTitle("Erreur !")
+            .setTitle("Erreur !", "Désolé il y a une erreur avec votre requête !")
             .addField("Raison :", "• Seul le proprétaire du bot peut éxécuter cette commande !")
             .setColor("#FF0000")
         message.channel.send(statuspasactualise_embed)
