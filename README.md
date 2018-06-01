@@ -1,3 +1,0 @@
-# VCS BOT
-
-By ZENFIX#8575.
